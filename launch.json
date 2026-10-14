@@ -1,0 +1,24 @@
+{
+  "kind": "custom_token",
+  "token": {
+    "contract": "MyrmexToken",
+    "name": "MyrmexSI",
+    "symbol": "MYRM",
+    "decimals": 18,
+    "constructorArgs": [],
+    "totalSupply": "1000000000000000000000000000"
+  },
+  "contracts": [],
+  "pool": {
+    "pairedCurrency": "0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7",
+    "fee": 12500,
+    "tickSpacing": 60,
+    "initialPrice": "79228162514264337593543950336"
+  },
+  "economics": {
+    "poolBps": 8000,
+    "initialMarketCapWei": "2500000000000000000000",
+    "remainderTo": "0xff3e8d9ba776662ca6ed1420ee366afb436d2684"
+  },
+  "notes": "MyrmexToken (src/MyrmexToken.sol) is the MyrmexSI (MYRM) token: a fixed-supply, self-contained EIP-20 with EIP-2612 permit and EIP-5267 eip712Domain. Its constructor takes no arguments and mints the whole supply of 1,000,000,000 MYRM (1000000000000000000000000000 minor units, 18 decimals) once to msg.sender, the launch factory. There is no owner, minter, pauser, blocklist, freeze, seize, burnFrom, fee, tax, reflection, hook, proxy or upgrade path; the supply can only shrink through a holder burning its own balance and can never grow. Transfers move exactly the amount requested, so the factory's transfer of the swarm's share to the MerkleDistributor, the distributor's claim payouts, the single-sided seed through the Uniswap v4 PoolManager, the forward of the remainder to economics.remainderTo and every later buy or sell against the PoolManager arrive whole. The token needs no exemptions and therefore takes none of $factory, $poolManager or $launchNumber. There are no application contracts and no initialization calls. The pool pairs with IMD at 0xd34a99bc0f67ae1bbd63c660e6d0b0dd03e263b7 at the launch policy's 1.25% fee with tick spacing 60; pool.initialPrice is provenance only, the deployer derives the opening price from economics.initialMarketCapWei (2,500 IMD for the whole supply) and token.totalSupply."
+}
